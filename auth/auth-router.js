@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const Users = require('../users/users-model.js');
-const secrets = require('../config/secrets.js');
+const { jwtSecret } = require('../config/secrets.js');
 
 router.post('/register', (req, res) => {
   // implement registration
@@ -56,7 +56,7 @@ function generateToken(user) {
   const options = {
     expiresIn: '2h'
   }
-  return jwt.sign(payload, secrets.jwtSecret, options);
+  return jwt.sign(payload, jwtSecret, options);
 }
 
 module.exports = router;

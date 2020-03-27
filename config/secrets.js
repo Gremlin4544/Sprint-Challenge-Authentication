@@ -1,3 +1,3 @@
 module.exports = {
-    jwtSecret: process.env.JWT_SECRET || 'live free or die hard',
+    jwtSecret: process.env.JWTKEY || 'live free or die hard',
 };

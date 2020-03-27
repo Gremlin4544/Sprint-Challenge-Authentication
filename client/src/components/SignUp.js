@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Signup = props => {
+const SignUp = props => {
     const [userInput, setUserInput] = useState({username: '', password: ''});
 
     const handleChange = e => {
@@ -9,7 +9,7 @@ const Signup = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        //console.log(props.history);
+        // console.log(props.history);
         const push = props.history.push();
         props.registerUser(userInput, props.history.push);
     }
@@ -41,16 +41,11 @@ const Signup = props => {
                             onChange={handleChange}
                         />
                     </div>
-             
                 </div>
                 <button type='submit'>Submit</button>
-                
-
             </form>
-
-            
         </div>
     )
 }
 
-export default Signup;
+export default SignUp;

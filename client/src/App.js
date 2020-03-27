@@ -10,10 +10,10 @@ import SignIn from './components/SignIn';
 import SignOut from './components/SignOut';
 
 function App() {
-  const [user, setUser] = useState({username: '', password: '', department: ''})
+  const [user, setUser] = useState({username: '', password: ''})
 
   const registerUser = (user, push) => {
-    axios.post('http://localhost:3000/api/auth/register', user)
+    axios.post('http://localhost:3300/api/auth/register', user)
       .then(response => {
         console.log(response)
         setUser(response.data);
