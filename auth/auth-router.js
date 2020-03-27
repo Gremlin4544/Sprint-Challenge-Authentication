@@ -21,6 +21,19 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res) => {
   // implement login
+
 });
+
+function generateToken(user) {
+  const payload = {
+    ident: user.id,
+    username: user.username
+  }
+  const secret = process.env.JWT_SECRET || 'live free or die hard';
+  const options = {
+    expiresIn = '2h'
+  }
+  return jwt.sign(payload, secret, options);
+}
 
 module.exports = router;
