@@ -19,6 +19,7 @@ describe('POST /api/auth/register', function() {
             expect(res.status).toBe(201);
         });
     });
+
     it ('should return JSON after a successful registration', function() {
         let randomNum = Math.random() * 8000;
         return request(server)
@@ -30,6 +31,7 @@ describe('POST /api/auth/register', function() {
             expect(res.type).toMatch(/json/i);
         });
     });
+
     it ('should return a token after a successful registration', function() {
         let randomNum = Math.random() * 8000;
         return request(server)
@@ -62,6 +64,7 @@ describe('POST /api/auth/login', function() {
                     }); 
             });
     });
+
     it ('should return a token after a successful registration', function() {
         let randomNum = Math.random() * 8000;
         return request(server)

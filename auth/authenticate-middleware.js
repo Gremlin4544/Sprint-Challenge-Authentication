@@ -2,23 +2,23 @@
   complete the middleware code to check if the user is logged in
   before granting access to the next middleware/route handler
 */
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
 
+const jwt = require('jsonwebtoken');
+const secrets = require('../config/secrets');
 
 module.exports = (req, res, next) => {
-  const { authorization } = req.headers;
-  const secret = process.env.JWT_SECRET || 'live free or die hard';
-  if (authorization) {
-    jwt.verify(authorization, secret, function(err, decodedToken) {
+  const token = req.headers.authorization;
+
+  if (token) {
+    jwt.verify(token, secrets.jwtSecret, (err, decodedToken) => {
       if (err) {
-        res.status(401).json({ message: 'invalid token - you shall not pass!' })
+        res.status(401).json({ message: 'Not verified' });
       } else {
-        req.token = decodedToken
+        req.decodedToken = decodedToken;
         next();
       }
-    })
+    });
   } else {
-    res.status(401).json({ you: 'shall not pass!' })
+    res.status(401).json({ you: 'shall not pass!' });
   }
 };
